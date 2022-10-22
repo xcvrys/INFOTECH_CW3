@@ -4,8 +4,9 @@ import {StyleSheet, View, SafeAreaView, Pressable, Text} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {AppNavigatorProps} from '../App';
 import {BtnList} from '../components/btnList';
+import ButtonItem from '../types/ButtonItem';
 
-const DATA = [
+const DATA: ButtonItem[] = [
   {
     id: '1',
     title: '1 Item',

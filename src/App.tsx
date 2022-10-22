@@ -31,6 +31,7 @@ const App = () => {
 export type AppNavigatorProps = {
   wordsActivity: undefined;
   sentenceBuilderActivity: undefined;
+  onboardingActivity: undefined;
 };
 
 export default App;

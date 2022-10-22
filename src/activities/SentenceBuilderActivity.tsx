@@ -4,8 +4,9 @@ import {SafeAreaView, StyleSheet, View, Text, Pressable} from 'react-native';
 import {AppNavigatorProps} from '../App';
 import {StackScreenProps} from '@react-navigation/stack';
 import {BtnList} from '../components/btnList';
+import ButtonItem from '../types/ButtonItem';
 
-const DATA = [
+const DATA: ButtonItem[] = [
   {
     id: '1',
     title: 'Item 1',
@@ -55,7 +56,7 @@ export const SentenceBuilderActivity: FC<
         <View style={styles.btn}>
           <Pressable
             onPress={() => navigation.goBack()}
-            style={styles.Navbutton}>
+            style={styles.navButton}>
             <Text style={styles.buttonText}>Static sentenres</Text>
           </Pressable>
         </View>
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     height: '7%',
     backgroundColor: '#9f70ff',
   },
-  Navbutton: {
+  navButton: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',

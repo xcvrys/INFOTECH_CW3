@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {StyleSheet, View, Text, Image} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+import ButtonItem from '../types/ButtonItem';
 
-export const BtnList = ({DATA}) => {
-  const Item = ({title}) => (
+export const BtnList: FC<BtnListProps> = ({DATA}) => {
+  const Item: FC<{title: string}> = ({title}) => (
     <View style={styles.item}>
       <Image
         style={styles.image}
@@ -13,7 +14,9 @@ export const BtnList = ({DATA}) => {
     </View>
   );
 
-  const renderItem = ({item}) => <Item title={item.title} />;
+  const renderItem: FC<{item: ButtonItem}> = ({item}) => (
+    <Item title={item.title} />
+  );
 
   return (
     <FlatList
@@ -54,6 +57,9 @@ const styles = StyleSheet.create({
   },
 });
 
+interface BtnListProps {
+  DATA: ButtonItem[];
+}
 // FFFFFF
 // EFFFFA
 // E5ECF4
