@@ -12,7 +12,8 @@ export const BtnList: FC<BtnListProps> = ({data}) => {
       style={[styles.item, {backgroundColor: wordCategories[category]}]}
       onPress={() => {
         Tts.voices().then(voices => console.log(voices));
-        Tts.speak(category);
+        Tts.speak(content);
+        // Tts.addEventListener('tts-finish', () => Tts.stop());
       }}
       activeOpacity={0.6}>
       <MaterialCommunityIcons name={icon} size={48} color={'black'} />

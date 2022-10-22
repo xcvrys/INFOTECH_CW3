@@ -9,12 +9,7 @@ export const OnboardingActivity: FC<
   return (
     <SafeAreaView style={styles.main}>
       <Text style={styles.Title}>Hi👋</Text>
-      <Text style={styles.MainText}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla impedit
-        excepturi omnis nihil nobis, magnam molestiae earum et corrupti dolores
-        quod nam doloribus iure sit optio repellendus commodi laboriosam porro?
-        <MaterialCommunityIcons name={'cat'} size={22} color={'black'} />
-      </Text>
+      <Text style={styles.MainText}>Welcome to AAC system</Text>
 
       <Pressable
         onPress={() => navigation.navigate('wordsActivity')}

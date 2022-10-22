@@ -5,7 +5,6 @@ import {StackScreenProps} from '@react-navigation/stack';
 import {AppNavigatorProps} from '../App';
 import {BtnList} from '../components/btnList';
 import Words from '../data/Words';
-import Tts from 'react-native-tts';
 
 export const WordsActivity: FC<
   StackScreenProps<AppNavigatorProps, 'wordsActivity'>

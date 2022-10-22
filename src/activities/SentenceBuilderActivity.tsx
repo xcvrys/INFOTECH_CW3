@@ -5,6 +5,8 @@ import {AppNavigatorProps} from '../App';
 import {StackScreenProps} from '@react-navigation/stack';
 import {BtnList} from '../components/btnList';
 import ButtonItem from '../types/ButtonItem';
+import Words from '../data/Words';
+import Tts from 'react-native-tts';
 
 const DATA: ButtonItem[] = [
   {
@@ -52,7 +54,7 @@ export const SentenceBuilderActivity: FC<
             <Text style={styles.buttonText}>Read</Text>
           </Pressable>
         </View>
-        <BtnList DATA={DATA} />
+        <BtnList data={Words} />
         <View style={styles.btn}>
           <Pressable
             onPress={() => navigation.goBack()}
