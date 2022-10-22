@@ -7,25 +7,7 @@ import {BtnList} from '../components/btnList';
 import ButtonItem from '../types/ButtonItem';
 import Words from '../data/Words';
 import Tts from 'react-native-tts';
-
-const DATA: ButtonItem[] = [
-  {
-    id: '1',
-    title: 'Item 1',
-  },
-  {
-    id: '2',
-    title: 'Item 2',
-  },
-  {
-    id: '3',
-    title: 'Item 3',
-  },
-  {
-    id: '4',
-    title: 'Item 4',
-  },
-];
+import useSentenceBuilderStore from '../state/SentenceBuilderStore';
 
 export const SentenceBuilderActivity: FC<
   StackScreenProps<AppNavigatorProps, 'sentenceBuilderActivity'>
@@ -33,24 +15,14 @@ export const SentenceBuilderActivity: FC<
   return (
     <SafeAreaView style={{backgroundColor: '#FFFFFF'}}>
       <View style={styles.main}>
-        <View style={styles.input}>
-          {/*  */}
-          <View style={styles.item}>
-            <Text>Q</Text>
-          </View>
-          <View style={styles.item}>
-            <Text>W</Text>
-          </View>
-          <View style={styles.item}>
-            <Text>E</Text>
-          </View>
-          {/*  */}
-        </View>
+        <SentenceVisualizer />
         <View style={styles.buttonList}>
-          <Pressable style={styles.button}>
+          <Pressable
+            style={styles.button}
+            onPress={() => useSentenceBuilderStore.getState().removeLastWord()}>
             <Text style={styles.buttonText}>Back</Text>
           </Pressable>
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={readSentence}>
             <Text style={styles.buttonText}>Read</Text>
           </Pressable>
         </View>
@@ -65,6 +37,24 @@ export const SentenceBuilderActivity: FC<
       </View>
     </SafeAreaView>
   );
+};
+
+const SentenceVisualizer: FC = () => {
+  const sentence = useSentenceBuilderStore(st => st.sentence);
+  return (
+    <View style={styles.input}>
+      {sentence.map(w => (
+        <View style={styles.item}>
+          <Text>{w}</Text>
+        </View>
+      ))}
+    </View>
+  );
+};
+
+const readSentence = () => {
+  const sentence = useSentenceBuilderStore.getState().sentence;
+  Tts.speak(sentence.join(' '));
 };
 
 const styles = StyleSheet.create({

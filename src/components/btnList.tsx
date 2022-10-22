@@ -4,16 +4,14 @@ import {FlatList} from 'react-native-gesture-handler';
 import {WordsItem} from '../data/Words';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import wordCategories from '../data/WordCategories';
-import Tts from 'react-native-tts';
+import useSentenceBuilderStore from '../state/SentenceBuilderStore';
 
 export const BtnList: FC<BtnListProps> = ({data}) => {
   const Item: FC<WordsItem> = ({category, content, icon}) => (
     <TouchableOpacity
       style={[styles.item, {backgroundColor: wordCategories[category]}]}
       onPress={() => {
-        Tts.voices().then(voices => console.log(voices));
-        Tts.speak(content);
-        // Tts.addEventListener('tts-finish', () => Tts.stop());
+        useSentenceBuilderStore.getState().addToSentence(content);
       }}
       activeOpacity={0.6}>
       <MaterialCommunityIcons name={icon} size={48} color={'black'} />
