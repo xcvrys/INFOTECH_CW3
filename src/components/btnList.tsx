@@ -1,29 +1,33 @@
 import React, {FC} from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
+import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
-import ButtonItem from '../types/ButtonItem';
+import {WordsItem} from '../data/Words';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import wordCategories from '../data/WordCategories';
+import Tts from 'react-native-tts';
 
-export const BtnList: FC<BtnListProps> = ({DATA}) => {
-  const Item: FC<{title: string}> = ({title}) => (
-    <View style={styles.item}>
-      <Image
-        style={styles.image}
-        source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-      />
-      <Text style={styles.text}>{title}</Text>
-    </View>
+export const BtnList: FC<BtnListProps> = ({data}) => {
+  const Item: FC<WordsItem> = ({category, content, icon}) => (
+    <TouchableOpacity
+      style={[styles.item, {backgroundColor: wordCategories[category]}]}
+      onPress={() => {
+        Tts.voices().then(voices => console.log(voices));
+        Tts.speak(category);
+      }}
+      activeOpacity={0.6}>
+      <MaterialCommunityIcons name={icon} size={48} color={'black'} />
+      <Text style={styles.text}>{content}</Text>
+    </TouchableOpacity>
   );
 
-  const renderItem: FC<{item: ButtonItem}> = ({item}) => (
-    <Item title={item.title} />
-  );
+  const renderItem: FC<{item: WordsItem}> = ({item}) => <Item {...item} />;
 
   return (
     <FlatList
-      data={DATA}
+      data={data}
       numColumns={3}
       renderItem={renderItem}
-      keyExtractor={item => item.id}
+      keyExtractor={item => item.id.toString()}
       style={styles.itemList}
     />
   );
@@ -56,7 +60,7 @@ const styles = StyleSheet.create({
 });
 
 interface BtnListProps {
-  DATA: ButtonItem[];
+  data: WordsItem[];
 }
 // FFFFFF
 // EFFFFA
