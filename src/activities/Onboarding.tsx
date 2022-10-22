@@ -2,12 +2,12 @@ import {StackScreenProps} from '@react-navigation/stack';
 import React, {FC} from 'react';
 import {Text, SafeAreaView, Pressable, StyleSheet} from 'react-native';
 import {AppNavigatorProps} from '../App';
-//@ts-ignore
-import {AsyncStorage} from 'react-native-async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import sentenceBuilderStore from '../state/SentenceBuilderStore';
 
 export const OnboardingActivity: FC<
   StackScreenProps<AppNavigatorProps, 'onboardingActivity'>
-> = ({navigation}) => {
+> = () => {
   return (
     <SafeAreaView style={styles.main}>
       <Text style={styles.Title}>Hi👋</Text>
@@ -15,8 +15,8 @@ export const OnboardingActivity: FC<
 
       <Pressable
         onPress={() => {
-          navigation.navigate('wordsActivity');
-          AsyncStorage.setItem('firstTime', true).then(() => {});
+          AsyncStorage.setItem('firstTime', 'true').then(() => {});
+          sentenceBuilderStore.getState().setOnboardingCompleted();
         }}
         style={styles.btn}>
         <Text style={styles.btnText}>START</Text>
