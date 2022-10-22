@@ -1,31 +1,62 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import React, {FC} from 'react';
-import {
-  // StyleSheet,
-  Text,
-  SafeAreaView,
-  Button,
-} from 'react-native';
+import {Text, SafeAreaView, Pressable, StyleSheet} from 'react-native';
 import {AppNavigatorProps} from '../App';
 
 export const OnboardingActivity: FC<
   StackScreenProps<AppNavigatorProps, 'onboardingActivity'>
 > = ({navigation}) => {
   return (
-    <SafeAreaView>
-      <Text>siema</Text>
-      <Button
-        title="Click"
+    <SafeAreaView style={styles.main}>
+      <Text style={styles.Title}>Hi👋</Text>
+      <Text style={styles.MainText}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla impedit
+        excepturi omnis nihil nobis, magnam molestiae earum et corrupti dolores
+        quod nam doloribus iure sit optio repellendus commodi laboriosam porro?
+      </Text>
+
+      <Pressable
         onPress={() => navigation.navigate('wordsActivity')}
-      />
+        style={styles.btn}>
+        <Text style={styles.btnText}>START</Text>
+      </Pressable>
     </SafeAreaView>
   );
 };
 
-// const styles = StyleSheet.create({});
-
-// FFFFFF
-// EFFFFA
-// E5ECF4
-// C3BEF7
-// 8A4FFF
+const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    backgroundColor: '#E7E7E7',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btn: {
+    height: 75,
+    width: 150,
+    backgroundColor: '#485696',
+    borderRadius: 25,
+    padding: 10,
+    margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnText: {
+    color: '#FFFFFF',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  Title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 50,
+    color: '#485696',
+  },
+  MainText: {
+    color: '#000000',
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 20,
+  },
+});

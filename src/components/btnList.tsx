@@ -31,14 +31,12 @@ export const BtnList: FC<BtnListProps> = ({DATA}) => {
 
 const styles = StyleSheet.create({
   itemList: {
-    // width: '100%',
-    backgroundColor: '#FFFFFF',
     padding: 10,
     flexWrap: 'wrap',
     flexDirection: 'column',
   },
   item: {
-    backgroundColor: '#E5ECF4',
+    backgroundColor: '#a4b1f4',
     margin: 10,
     width: 100,
     minHeight: 125,

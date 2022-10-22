@@ -45,19 +45,19 @@ export const SentenceBuilderActivity: FC<
           {/*  */}
         </View>
         <View style={styles.buttonList}>
-          <View style={styles.button}>
-            <Text>Delete</Text>
-          </View>
-          <View style={styles.button}>
-            <Text>Read</Text>
-          </View>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Back</Text>
+          </Pressable>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Read</Text>
+          </Pressable>
         </View>
         <BtnList DATA={DATA} />
         <View style={styles.btn}>
           <Pressable
             onPress={() => navigation.goBack()}
             style={styles.navButton}>
-            <Text style={styles.buttonText}>Static sentenres</Text>
+            <Text style={styles.NavbuttonText}>Static sentenres</Text>
           </Pressable>
         </View>
       </View>
@@ -75,13 +75,13 @@ const styles = StyleSheet.create({
     height: '10%',
     width: '90%',
     marginTop: '5%',
-    backgroundColor: '#C3BEF7',
+    backgroundColor: '#485696',
     borderRadius: 8,
     padding: 10,
     flexDirection: 'row',
   },
   item: {
-    backgroundColor: '#E5ECF4',
+    backgroundColor: '#a4b1f4',
     paddingHorizontal: 15,
     height: '100%',
     borderRadius: 6,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   button: {
     width: '40%',
     height: '100%',
-    backgroundColor: '#C3BEF7',
+    backgroundColor: '#485696',
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   btn: {
     width: '100%',
     height: '7%',
-    backgroundColor: '#9f70ff',
+    backgroundColor: '#485696',
   },
   navButton: {
     justifyContent: 'center',
@@ -118,6 +118,10 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   buttonText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+  },
+  NavbuttonText: {
     color: '#FFFFFF',
     fontSize: 20,
   },
