@@ -2,7 +2,7 @@ import {StackScreenProps} from '@react-navigation/stack';
 import React, {FC} from 'react';
 import {Text, SafeAreaView, Pressable, StyleSheet} from 'react-native';
 import {AppNavigatorProps} from '../App';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 export const OnboardingActivity: FC<
   StackScreenProps<AppNavigatorProps, 'onboardingActivity'>
 > = ({navigation}) => {
@@ -13,6 +13,7 @@ export const OnboardingActivity: FC<
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla impedit
         excepturi omnis nihil nobis, magnam molestiae earum et corrupti dolores
         quod nam doloribus iure sit optio repellendus commodi laboriosam porro?
+        <MaterialCommunityIcons name={'cat'} size={22} color={'black'} />
       </Text>
 
       <Pressable
