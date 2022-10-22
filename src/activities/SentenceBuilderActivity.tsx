@@ -8,6 +8,7 @@ import ButtonItem from '../types/ButtonItem';
 import Words from '../data/Words';
 import Tts from 'react-native-tts';
 import useSentenceBuilderStore from '../state/SentenceBuilderStore';
+import generateRandomID from '../utils/randomid';
 
 export const SentenceBuilderActivity: FC<
   StackScreenProps<AppNavigatorProps, 'sentenceBuilderActivity'>
@@ -44,7 +45,7 @@ const SentenceVisualizer: FC = () => {
   return (
     <View style={styles.input}>
       {sentence.map(w => (
-        <View style={styles.item}>
+        <View key={generateRandomID()} style={styles.item}>
           <Text>{w}</Text>
         </View>
       ))}
@@ -55,6 +56,7 @@ const SentenceVisualizer: FC = () => {
 const readSentence = () => {
   const sentence = useSentenceBuilderStore.getState().sentence;
   Tts.speak(sentence.join(' '));
+  useSentenceBuilderStore.getState().clearSentence();
 };
 
 const styles = StyleSheet.create({
