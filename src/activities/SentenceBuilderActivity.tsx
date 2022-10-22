@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {FC} from 'react';
-import {SafeAreaView, Button, StyleSheet, View, Text} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Text, Pressable} from 'react-native';
 import {AppNavigatorProps} from '../App';
 import {StackScreenProps} from '@react-navigation/stack';
 import {BtnList} from '../components/btnList';
@@ -13,6 +13,14 @@ const DATA = [
   {
     id: '2',
     title: 'Item 2',
+  },
+  {
+    id: '3',
+    title: 'Item 3',
+  },
+  {
+    id: '4',
+    title: 'Item 4',
   },
 ];
 
@@ -45,11 +53,11 @@ export const SentenceBuilderActivity: FC<
         </View>
         <BtnList DATA={DATA} />
         <View style={styles.btn}>
-          <Button
+          <Pressable
             onPress={() => navigation.goBack()}
-            color="#8A4FFF"
-            title={'go back to view1'}
-          />
+            style={styles.Navbutton}>
+            <Text style={styles.buttonText}>Static sentenres</Text>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
@@ -98,8 +106,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   btn: {
-    height: '4.5%',
     width: '100%',
+    height: '7%',
+    backgroundColor: '#9f70ff',
+  },
+  Navbutton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 20,
   },
 });
 

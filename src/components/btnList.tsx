@@ -18,6 +18,7 @@ export const BtnList = ({DATA}) => {
   return (
     <FlatList
       data={DATA}
+      numColumns={3}
       renderItem={renderItem}
       keyExtractor={item => item.id}
       style={styles.itemList}
@@ -27,6 +28,7 @@ export const BtnList = ({DATA}) => {
 
 const styles = StyleSheet.create({
   itemList: {
+    // width: '100%',
     backgroundColor: '#FFFFFF',
     padding: 10,
     flexWrap: 'wrap',

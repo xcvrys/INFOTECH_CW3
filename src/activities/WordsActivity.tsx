@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {FC} from 'react';
-import {StyleSheet, View, Button, SafeAreaView} from 'react-native';
+import {StyleSheet, View, SafeAreaView, Pressable, Text} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {AppNavigatorProps} from '../App';
 import {BtnList} from '../components/btnList';
@@ -30,6 +30,63 @@ const DATA = [
     id: '6',
     title: '6 Item',
   },
+  {
+    id: '7',
+    title: '7 Item',
+  },
+  {
+    id: '8',
+    title: '8 Item',
+  },
+  {
+    id: '9',
+    title: '9 Item',
+  },
+  {
+    id: '10',
+    title: '10 Item',
+  },
+
+  {
+    id: '11',
+    title: '11 Item',
+  },
+  {
+    id: '12',
+    title: '12 Item',
+  },
+  {
+    id: '13',
+    title: '13 Item',
+  },
+  {
+    id: '14',
+    title: '14 Item',
+  },
+  {
+    id: '15',
+    title: '15 Item',
+  },
+  {
+    id: '16',
+    title: '16 Item',
+  },
+  {
+    id: '17',
+    title: '17 Item',
+  },
+  {
+    id: '18',
+    title: '18 Item',
+  },
+  {
+    id: '19',
+    title: '19 Item',
+  },
+  {
+    id: '20',
+    title: '20 Item',
+  },
 ];
 
 export const WordsActivity: FC<
@@ -40,11 +97,11 @@ export const WordsActivity: FC<
       <View style={styles.main}>
         <BtnList DATA={DATA} />
         <View style={styles.btn}>
-          <Button
+          <Pressable
             onPress={() => navigation.navigate('sentenceBuilderActivity')}
-            color="#8A4FFF"
-            title={'go to view2'}
-          />
+            style={styles.button}>
+            <Text style={styles.buttonText}>Create Your own</Text>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
@@ -57,7 +114,19 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   btn: {
-    height: '4.5%',
+    width: '100%',
+    height: '7%',
+    backgroundColor: '#9f70ff',
+  },
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 20,
   },
 });
 
@@ -65,4 +134,5 @@ const styles = StyleSheet.create({
 // EFFFFA
 // E5ECF4
 // C3BEF7
+// 9f70ff
 // 8A4FFF
