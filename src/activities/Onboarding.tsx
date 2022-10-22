@@ -2,7 +2,9 @@ import {StackScreenProps} from '@react-navigation/stack';
 import React, {FC} from 'react';
 import {Text, SafeAreaView, Pressable, StyleSheet} from 'react-native';
 import {AppNavigatorProps} from '../App';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+//@ts-ignore
+import {AsyncStorage} from 'react-native-async-storage';
+
 export const OnboardingActivity: FC<
   StackScreenProps<AppNavigatorProps, 'onboardingActivity'>
 > = ({navigation}) => {
@@ -12,7 +14,10 @@ export const OnboardingActivity: FC<
       <Text style={styles.MainText}>Welcome to AAC system</Text>
 
       <Pressable
-        onPress={() => navigation.navigate('wordsActivity')}
+        onPress={() => {
+          navigation.navigate('wordsActivity');
+          AsyncStorage.setItem('firstTime', true).then(() => {});
+        }}
         style={styles.btn}>
         <Text style={styles.btnText}>START</Text>
       </Pressable>

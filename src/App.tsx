@@ -1,28 +1,41 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {
-  SentenceBuilderActivity,
-  WordsActivity,
-  OnboardingActivity,
-} from './activities';
+import {WordsActivity, OnboardingActivity} from './activities';
 import {createStackNavigator} from '@react-navigation/stack';
+//@ts-ignore
+import {AsyncStorage} from 'react-native-async-storage';
 
 const App = () => {
   const AppNavigator = createStackNavigator<AppNavigatorProps>();
+  const [firstTime, setFirstTime] = React.useState(true);
+
+  useEffect(() => {
+    AsyncStorage.getItem('firstTime').then(value => {
+      if (value === 'true') {
+        setFirstTime(false);
+      }
+    });
+  }, []);
+
   return (
     <NavigationContainer>
       <AppNavigator.Navigator
         initialRouteName={'onboardingActivity'}
         screenOptions={{headerShown: false}}>
         <AppNavigator.Screen name="wordsActivity" component={WordsActivity} />
-        <AppNavigator.Screen
-          name={'sentenceBuilderActivity'}
-          component={SentenceBuilderActivity}
-        />
-        <AppNavigator.Screen
-          name="onboardingActivity"
-          component={OnboardingActivity}
-        />
+        {firstTime ? (
+          <AppNavigator.Screen
+            name="onboardingActivity"
+            component={OnboardingActivity}
+            options={{headerShown: false}}
+          />
+        ) : (
+          <AppNavigator.Screen
+            name="wordsActivity"
+            component={WordsActivity}
+            options={{headerShown: false}}
+          />
+        )}
       </AppNavigator.Navigator>
     </NavigationContainer>
   );

@@ -4,7 +4,6 @@ import {SafeAreaView, StyleSheet, View, Text, Pressable} from 'react-native';
 import {AppNavigatorProps} from '../App';
 import {StackScreenProps} from '@react-navigation/stack';
 import {BtnList} from '../components/btnList';
-import ButtonItem from '../types/ButtonItem';
 import Words from '../data/Words';
 import Tts from 'react-native-tts';
 import useSentenceBuilderStore from '../state/SentenceBuilderStore';
@@ -46,7 +45,7 @@ const SentenceVisualizer: FC = () => {
     <View style={styles.input}>
       {sentence.map(w => (
         <View key={generateRandomID()} style={styles.item}>
-          <Text>{w}</Text>
+          <Text style={styles.itemText}>{w}</Text>
         </View>
       ))}
     </View>
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   item: {
-    backgroundColor: '#a4b1f4',
+    backgroundColor: '#6373c3',
     paddingHorizontal: 15,
     height: '100%',
     borderRadius: 6,
@@ -91,6 +90,10 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+  },
+  itemText: {
+    color: '#FFFFFF',
+    fontSize: 20,
   },
   button: {
     width: '40%',

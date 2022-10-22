@@ -1,17 +1,18 @@
 import React, {FC} from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
-import {WordsItem} from '../data/Words';
+import {SentencesItem} from '../data/Sentences';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import wordCategories from '../data/WordCategories';
-import useSentenceBuilderStore from '../state/SentenceBuilderStore';
+// import useSentenceBuilderStore from '../state/SentenceBuilderStore';
+import Tts from 'react-native-tts';
 
-export const BtnList: FC<BtnListProps> = ({data}) => {
-  const Item: FC<WordsItem> = ({category, content, icon}) => (
+export const BtnClick: FC<SentencesItemProps> = ({data}) => {
+  const Item: FC<SentencesItem> = ({category, content, icon}) => (
     <TouchableOpacity
       style={[styles.item, {backgroundColor: wordCategories[category]}]}
       onPress={() => {
-        useSentenceBuilderStore.getState().addToSentence(content);
+        Tts.speak(content);
       }}
       activeOpacity={0.6}>
       <MaterialCommunityIcons name={icon} size={48} color={'black'} />
@@ -19,7 +20,7 @@ export const BtnList: FC<BtnListProps> = ({data}) => {
     </TouchableOpacity>
   );
 
-  const renderItem: FC<{item: WordsItem}> = ({item}) => <Item {...item} />;
+  const renderItem: FC<{item: SentencesItem}> = ({item}) => <Item {...item} />;
 
   return (
     <FlatList
@@ -58,8 +59,8 @@ const styles = StyleSheet.create({
   },
 });
 
-interface BtnListProps {
-  data: WordsItem[];
+interface SentencesItemProps {
+  data: SentencesItem[];
 }
 // FFFFFF
 // EFFFFA

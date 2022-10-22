@@ -1,17 +1,16 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {FC} from 'react';
 import {StyleSheet, View, SafeAreaView, Pressable, Text} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {AppNavigatorProps} from '../App';
-import {BtnList} from '../components/btnList';
-import Words from '../data/Words';
+import {BtnClick} from '../components/btnClick';
+import Sentences from '../data/Sentences';
 
 export const WordsActivity: FC<
   StackScreenProps<AppNavigatorProps, 'wordsActivity'>
 > = ({navigation}) => {
   return (
     <SafeAreaView style={styles.main}>
-      <BtnList data={Words} />
+      <BtnClick data={Sentences} />
       <View style={styles.btn}>
         <Pressable
           onPress={() => navigation.navigate('sentenceBuilderActivity')}
